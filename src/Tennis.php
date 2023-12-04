@@ -24,7 +24,7 @@ class Tennis
         }
 
 
-        return $this->mappingScoreName[$this->firstPlayerScore].' All';
+        return $this->sameScore();
     }
 
     public function addFirstPlayerScore()
@@ -35,5 +35,13 @@ class Tennis
     public function addSecondPlayerScore()
     {
         $this->secondPlayerScore++;
+    }
+
+    /**
+     * @return string
+     */
+    public function sameScore(): string
+    {
+        return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
     }
 }
