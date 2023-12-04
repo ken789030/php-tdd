@@ -13,13 +13,14 @@ class Tennis
         0 => 'Love',
         1 => 'Fifteen',
         2 => 'Thirty',
+        3 => 'Forty',
     ];
     private int $secondPlayerScore = 0;
 
     public function score()
     {
         if ($this->firstPlayerScore != $this->secondPlayerScore) {
-            return $this->mappingScoreName[$this->firstPlayerScore].' '.$this->mappingScoreName[$this->secondPlayerScore];
+            return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
         return 'Love All';
