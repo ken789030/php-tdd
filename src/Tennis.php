@@ -23,7 +23,8 @@ class Tennis
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
-        return 'Love All';
+
+        return $this->mappingScoreName[$this->firstPlayerScore].' All';
     }
 
     public function addFirstPlayerScore()
