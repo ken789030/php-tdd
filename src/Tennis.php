@@ -28,20 +28,9 @@ class Tennis
 
     public function score()
     {
-        if ($this->isDiffScore()) {
-            if ($this->isReadyGamePoint()) {
-                if ($this->isAdv()) {
-                    return $this->adv();
-                }
-            }
-            return $this->lookupScore();
-        }
-
-        if ($this->isDeuce()) {
-            return 'Deuce';
-        }
-
-        return $this->sameScore();
+        return $this->isDiffScore()
+            ? ($this->isReadyGamePoint() ? $this->advState() : $this->lookupScore())
+            : ($this->isDeuce() ? $this->deuce() : $this->sameScore());
     }
 
     public function addFirstPlayerScore()
@@ -112,11 +101,20 @@ class Tennis
             $this->secondPlayerName;
     }
 
+
     /**
      * @return string
      */
-    public function adv(): string
+    public function advState(): string
     {
-        return $this->advPlayer() . ' Adv';
+        return $this->isAdv() ? $this->advPlayer() . ' Adv' : $this->advPlayer() . ' Win';
+    }
+
+    /**
+     * @return string
+     */
+    public function deuce(): string
+    {
+        return 'Deuce';
     }
 }

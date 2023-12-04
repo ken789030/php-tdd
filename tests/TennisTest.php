@@ -83,6 +83,13 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Abi Adv');
     }
 
+    public function test_firstPlayer_Win()
+    {
+        $this->isDeuce();
+        $this->givenFirstPlayerScoreTimes(2);
+        $this->scoreShouldBe('Joey Win');
+    }
+
     private function scoreShouldBe(string $expected): void
     {
         $this->assertEquals($expected, $this->tennis->score());
