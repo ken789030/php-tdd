@@ -23,16 +23,26 @@ class TennisTest extends TestCase
 
     public function test_Thirty_Love()
     {
-        $this->tennis->addFirstPlayerScore();
-        $this->tennis->addFirstPlayerScore();
+        $this->givenFirstPlayerScoreTimes(2);
 
         $this->scoreShouldBe('Thirty Love');
     }
 
-    private function scoreShouldBe($expected): void
+    private function scoreShouldBe(string $expected): void
     {
         $this->assertEquals($expected, $this->tennis->score());
     }
+
+    /**
+     * @return void
+     */
+    public function givenFirstPlayerScoreTimes(int $times): void
+    {
+        for ($i = 0; $i < $times; $i++) {
+            $this->tennis->addFirstPlayerScore();
+        }
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
