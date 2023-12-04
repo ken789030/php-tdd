@@ -76,6 +76,12 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Joey Adv');
     }
 
+    public function test_secondPlayer_Adv()
+    {
+        $this->isDeuce();
+        $this->givenSecondPlayerScoreTimes(1);
+        $this->scoreShouldBe('Abi Adv');
+    }
 
     private function scoreShouldBe(string $expected): void
     {
@@ -114,7 +120,7 @@ class TennisTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->tennis = new Tennis('Joey');
+        $this->tennis = new Tennis('Joey', 'Abi');
     }
 
 }
