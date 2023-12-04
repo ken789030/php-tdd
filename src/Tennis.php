@@ -4,6 +4,13 @@ namespace App;
 
 class Tennis
 {
+    private string $firstPlayerName;
+
+    public function __construct(string $firstPlayerName)
+    {
+
+        $this->firstPlayerName = $firstPlayerName;
+    }
 
     private int $firstPlayerScore = 0;
     /**
@@ -20,6 +27,11 @@ class Tennis
     public function score()
     {
         if ($this->isDiffScore()) {
+            if ($this->firstPlayerScore > 3) {
+                if ($this->firstPlayerScore - $this->secondPlayerScore === 1) {
+                    return $this->firstPlayerName . ' Adv';
+                }
+            }
             return $this->lookupScore();
         }
 

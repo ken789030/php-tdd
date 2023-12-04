@@ -7,6 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class TennisTest extends TestCase
 {
+    /**
+     * @var Tennis
+     */
     private Tennis $tennis;
 
     public function test_Love_All()
@@ -66,6 +69,13 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Deuce');
     }
 
+    public function test_firstPlayer_Adv()
+    {
+        $this->isDeuce();
+        $this->givenFirstPlayerScoreTimes(1);
+        $this->scoreShouldBe('Joey Adv');
+    }
+
 
     private function scoreShouldBe(string $expected): void
     {
@@ -104,7 +114,7 @@ class TennisTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->tennis = new Tennis();
+        $this->tennis = new Tennis('Joey');
     }
 
 }
