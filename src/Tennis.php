@@ -13,9 +13,13 @@ class Tennis
         1 => 'Fifteen',
         2 => 'Thirty',
     ];
+    private int $secondPlayerScore = 0;
 
     public function score()
     {
+        if ($this->secondPlayerScore === 1) {
+            return 'Love Fifteen';
+        }
         if ($this->firstPlayerScore > 0) {
             return $this->mappingScoreName[$this->firstPlayerScore] . ' Love';
         }
@@ -26,5 +30,10 @@ class Tennis
     public function addFirstPlayerScore()
     {
         $this->firstPlayerScore++;
+    }
+
+    public function addSecondPlayerScore()
+    {
+        $this->secondPlayerScore++;
     }
 }
