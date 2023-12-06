@@ -38,14 +38,13 @@ class TennisTest extends TestCase
 
     public function test_Love_Fifteen()
     {
-        $this->tennis->addSecondPlayerScore();
+        $this->givenSecondPlayerScoreTimes(1);
         $this->scoreShouldBe('Love Fifteen');
     }
 
     public function test_Love_Thirty()
     {
-        $this->tennis->addSecondPlayerScore();
-        $this->tennis->addSecondPlayerScore();
+        $this->givenSecondPlayerScoreTimes(2);
         $this->scoreShouldBe('Love Thirty');
     }
 
@@ -65,6 +64,16 @@ class TennisTest extends TestCase
     {
         for ($i = 0; $i < $times; $i++) {
             $this->tennis->addFirstPlayerScore();
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function givenSecondPlayerScoreTimes(int $times): void
+    {
+        for ($i = 0; $i < $times; $i++) {
+            $this->tennis->addSecondPlayerScore();
         }
     }
 
