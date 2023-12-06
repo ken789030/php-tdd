@@ -22,9 +22,13 @@ class Tennis
 
     public function score()
     {
-        if ($this->secondPlayerScore===1) {
+        if ($this->secondPlayerScore === 1) {
 
             return 'Love Fifteen';
+        }
+
+        if ($this->secondPlayerScore === 2) {
+            return 'Love Thirty';
         }
 
         if ($this->firstPlayerScore > 0) {
