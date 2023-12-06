@@ -29,13 +29,10 @@ class Tennis
     {
 
         if ($this->isDiffScore()) {
-            if ($this->firstPlayerScore > 3 || $this->secondPlayerScore > 3) {
+            if ($this->isReadyGamePoint()) {
 
-                if (abs($this->firstPlayerScore - $this->secondPlayerScore) === 1) {
-                    $advPlayer = $this->firstPlayerScore > $this->secondPlayerScore
-                        ? $this->firstPlayerName
-                        : $this->secondPlayerName;
-                    return $advPlayer . ' Adv';
+                if ($this->isAdv()) {
+                    return $this->advPlayer() . ' Adv';
                 }
             }
             return $this->lookupScore();
@@ -97,5 +94,31 @@ class Tennis
     public function lookupScore(): string
     {
         return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
+    }
+
+    /**
+     * @return string
+     */
+    public function advPlayer(): string
+    {
+        return $this->firstPlayerScore > $this->secondPlayerScore
+            ? $this->firstPlayerName
+            : $this->secondPlayerName;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdv(): bool
+    {
+        return abs($this->firstPlayerScore - $this->secondPlayerScore) === 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReadyGamePoint(): bool
+    {
+        return $this->firstPlayerScore > 3 || $this->secondPlayerScore > 3;
     }
 }
