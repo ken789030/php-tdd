@@ -20,14 +20,13 @@ class TennisTest extends TestCase
 
     public function test_Fifteen_Love()
     {
-        $this->tennis->addFirstPlayerScore();
+        $this->givenFirstPlayerScoreTimes(1);
         $this->scoreShouldBe('Fifteen Love');
     }
 
     public function test_Thirty_Love()
     {
-        $this->tennis->addFirstPlayerScore();
-        $this->tennis->addFirstPlayerScore();
+        $this->givenFirstPlayerScoreTimes(2);
         $this->scoreShouldBe('Thirty Love');
     }
 
@@ -37,6 +36,16 @@ class TennisTest extends TestCase
     public function scoreShouldBe($expected): void
     {
         self::assertEquals($expected, $this->tennis->score());
+    }
+
+    /**
+     * @return void
+     */
+    public function givenFirstPlayerScoreTimes(int $times): void
+    {
+        for ($i = 0; $i < $times; $i++) {
+            $this->tennis->addFirstPlayerScore();
+        }
     }
 
     protected function setUp(): void
