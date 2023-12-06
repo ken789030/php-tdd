@@ -17,6 +17,13 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Love All');
     }
 
+    public function test_Fifteen_Love()
+    {
+        $this->tennis->addFirstPlayerScore();
+        $this->scoreShouldBe('Fifteen Love');
+    }
+
+
     /**
      * @return void
      */
