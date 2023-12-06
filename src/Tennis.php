@@ -34,6 +34,8 @@ class Tennis
                 if ($this->isAdv()) {
                     return $this->advPlayer() . ' Adv';
                 }
+
+                return $this->advPlayer() . ' Win';
             }
             return $this->lookupScore();
         }
