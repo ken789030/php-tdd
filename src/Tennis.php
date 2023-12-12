@@ -32,6 +32,7 @@ class Tennis
                 if (abs($this->firstPlayerScore - $this->secondPlayerScore) === 1) {
                     return $this->advPlayer() . ' Adv';
                 }
+                return $this->advPlayer() . ' Win';
             }
             return $this->lookupScore();
         }
