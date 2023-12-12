@@ -32,6 +32,13 @@ class BowlingTest extends TestCase
 
     }
 
+    public function test_all_spare()
+    {
+        $this->bowling->rollMany(21, 5);
+        $this->scoreShouldBe(150);
+
+    }
+
     /**
      * @return void
      */

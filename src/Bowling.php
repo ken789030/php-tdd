@@ -21,6 +21,9 @@ class Bowling
             if ($this->rolls[$frameIndex] === 10) {
                 $score += 10 + $this->rolls[$frameIndex + 1] + $this->rolls[$frameIndex + 2];
                 $frameIndex++;
+            } elseif ($this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10) {
+                $score += 10 + $this->rolls[$frameIndex + 2];
+                $frameIndex += 2;
             } else {
                 $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
                 $frameIndex += 2;
