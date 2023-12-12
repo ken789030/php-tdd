@@ -18,14 +18,14 @@ class Bowling
         $score = 0;
 
         for ($i = 0; $i < $frames; $i++) {
-            if ($this->rolls[$frameIndex] === 10) {
-                $score += 10 + $this->rolls[$frameIndex + 1] + $this->rolls[$frameIndex + 2];
+            if ($this->isStrike($frameIndex)) {
+                $score += $this->strikeBonus($frameIndex);
                 $frameIndex++;
-            } elseif ($this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10) {
-                $score += 10 + $this->rolls[$frameIndex + 2];
+            } elseif ($this->isSpare($frameIndex)) {
+                $score += $this->spareBonus($frameIndex);
                 $frameIndex += 2;
             } else {
-                $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
+                $score += $this->SumofBallsInFrame($frameIndex);
                 $frameIndex += 2;
             }
         }
@@ -38,5 +38,50 @@ class Bowling
         for ($i = 0; $i < $rollCount; $i++) {
             $this->rolls[] = $pins;
         }
+    }
+
+    /**
+     * @param int $frameIndex
+     * @return bool
+     */
+    public function isStrike(int $frameIndex): bool
+    {
+        return $this->rolls[$frameIndex] === 10;
+    }
+
+    /**
+     * @param int $frameIndex
+     * @return bool
+     */
+    public function isSpare(int $frameIndex): bool
+    {
+        return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] === 10;
+    }
+
+    /**
+     * @param int $frameIndex
+     * @return int|mixed
+     */
+    public function strikeBonus(int $frameIndex): mixed
+    {
+        return 10 + $this->rolls[$frameIndex + 1] + $this->rolls[$frameIndex + 2];
+    }
+
+    /**
+     * @param int $frameIndex
+     * @return int|mixed
+     */
+    public function spareBonus(int $frameIndex): mixed
+    {
+        return 10 + $this->rolls[$frameIndex + 2];
+    }
+
+    /**
+     * @param int $frameIndex
+     * @return mixed
+     */
+    public function SumofBallsInFrame(int $frameIndex): mixed
+    {
+        return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
     }
 }
