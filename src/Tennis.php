@@ -27,6 +27,10 @@ class Tennis
             return $this->lookupScore();
         }
 
+        if ($this->firstPlayerScore === 3) {
+            return 'Deuce';
+        }
+
         return $this->sameScore();
     }
 
