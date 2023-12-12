@@ -30,8 +30,7 @@ class Tennis
         if ($this->isDiffScore()) {
             if ($this->firstPlayerScore > 3 || $this->secondPlayerScore > 3) {
                 if (abs($this->firstPlayerScore - $this->secondPlayerScore) === 1) {
-                    $advPlayer = $this->firstPlayerScore > $this->secondPlayerScore ? $this->firstPlayerName : $this->secondPlayerName;
-                    return $advPlayer . ' Adv';
+                    return $this->advPlayer() . ' Adv';
                 }
             }
             return $this->lookupScore();
@@ -92,5 +91,13 @@ class Tennis
     public function deuce(): string
     {
         return 'Deuce';
+    }
+
+    /**
+     * @return string
+     */
+    public function advPlayer(): string
+    {
+        return $this->firstPlayerScore > $this->secondPlayerScore ? $this->firstPlayerName : $this->secondPlayerName;
     }
 }
