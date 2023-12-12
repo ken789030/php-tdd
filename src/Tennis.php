@@ -10,6 +10,7 @@ class Tennis
      * @var array|string[]
      */
     private array $mappingScoreName = [
+        0 => 'Love',
         1 => 'Fifteen',
         2 => 'Thirty',
         3 => 'Forty',
@@ -22,19 +23,9 @@ class Tennis
 
     public function score()
     {
-
-        if ($this->firstPlayerScore > 0) {
-            return $this->mappingScoreName[$this->firstPlayerScore] . ' Love';
+        if ($this->firstPlayerScore!=$this->secondPlayerScore) {
+            return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
-
-        if ($this->secondPlayerScore === 1) {
-            return 'Love ' . $this->mappingScoreName[$this->secondPlayerScore];
-        }
-
-        if ($this->secondPlayerScore === 2) {
-            return 'Love Thirty';
-        }
-
 
         return 'Love All';
     }
