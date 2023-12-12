@@ -27,6 +27,11 @@ class Tennis
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
+        if ($this->firstPlayerScore === 1) {
+
+            return 'Fifteen All';
+        }
+
         return 'Love All';
     }
 
