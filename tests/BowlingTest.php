@@ -25,6 +25,13 @@ class BowlingTest extends TestCase
 
     }
 
+    public function test_all_strike()
+    {
+        $this->bowling->rollMany(12, 10);
+        $this->scoreShouldBe(300);
+
+    }
+
     /**
      * @return void
      */
