@@ -13,7 +13,20 @@ class Bowling
 
     public function score()
     {
-        return array_sum($this->rolls);
+        $frames = 10;
+        $frameIndex = 0;
+        $score = 0;
+
+        for ($i = 0; $i < $frames; $i++) {
+            if ($this->rolls[$frameIndex] === 10) {
+                $score += 10 + $this->rolls[$frameIndex + 1] + $this->rolls[$frameIndex + 2];
+                $frameIndex++;
+            } else {
+                $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex];
+                $frameIndex += 2;
+            }
+        }
+        return $score;
     }
 
     public function rollMany(int $rollCount, int $pins)
