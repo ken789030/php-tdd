@@ -33,6 +33,8 @@ class Tennis
                     return $this->advPlayer() . ' Adv';
                 }
 
+                return $this->advPlayer() . ' Win';
+
 
             }
             return $this->lookupScore();

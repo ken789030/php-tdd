@@ -81,7 +81,12 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Abi Adv');
     }
 
-
+    public function test_secondPlayer_Win()
+    {
+        $this->isDeuce();
+        $this->givenSecondPlayerScoreTimes(2);
+        $this->scoreShouldBe('Abi Win');
+    }
 
     /**
      * @return void
