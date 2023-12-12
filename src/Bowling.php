@@ -36,7 +36,7 @@ class Bowling
     public function rollMany(int $rollCount, int $pins)
     {
         for ($i = 0; $i < $rollCount; $i++) {
-            $this->rolls[] = $pins;
+            $this->roll($pins);
         }
     }
 
@@ -83,5 +83,14 @@ class Bowling
     public function SumofBallsInFrame(int $frameIndex): mixed
     {
         return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
+    }
+
+    /**
+     * @param int $pins
+     * @return void
+     */
+    public function roll(int $pins): void
+    {
+        $this->rolls[] = $pins;
     }
 }

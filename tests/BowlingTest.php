@@ -39,6 +39,15 @@ class BowlingTest extends TestCase
 
     }
 
+    public function test_last_roll_spare()
+    {
+        $this->bowling->rollMany(18, 0);
+        $this->bowling->rollMany(2, 5);
+        $this->bowling->roll(10);
+        $this->scoreShouldBe(20);
+
+    }
+
     /**
      * @return void
      */
