@@ -27,8 +27,8 @@ class Tennis
             return $this->lookupScore();
         }
 
-        if ($this->firstPlayerScore === 3) {
-            return 'Deuce';
+        if ($this->isDeuce()) {
+            return $this->deuce();
         }
 
         return $this->sameScore();
@@ -66,5 +66,21 @@ class Tennis
     public function sameScore(): string
     {
         return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDeuce(): bool
+    {
+        return $this->firstPlayerScore === 3;
+    }
+
+    /**
+     * @return string
+     */
+    public function deuce(): string
+    {
+        return 'Deuce';
     }
 }
