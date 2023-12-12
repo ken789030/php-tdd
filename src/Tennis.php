@@ -23,11 +23,11 @@ class Tennis
 
     public function score()
     {
-        if ($this->firstPlayerScore != $this->secondPlayerScore) {
-            return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
+        if ($this->isDiffScore()) {
+            return $this->lookupScore();
         }
 
-        return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
+        return $this->sameScore();
     }
 
     public function addFirstPlayerScore()
@@ -38,5 +38,29 @@ class Tennis
     public function addSecondPlayerScore()
     {
         $this->secondPlayerScore++;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDiffScore(): bool
+    {
+        return $this->firstPlayerScore != $this->secondPlayerScore;
+    }
+
+    /**
+     * @return string
+     */
+    public function lookupScore(): string
+    {
+        return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
+    }
+
+    /**
+     * @return string
+     */
+    public function sameScore(): string
+    {
+        return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
     }
 }
