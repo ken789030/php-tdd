@@ -28,7 +28,11 @@ class Tennis
         }
 
         if ($this->firstPlayerScore === 1) {
-            return $this->mappingScoreName[$this->firstPlayerScore].' All';
+            return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
+        }
+
+        if ($this->firstPlayerScore === 2) {
+            return 'Thirty All';
         }
 
         return 'Love All';
