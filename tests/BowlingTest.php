@@ -18,6 +18,13 @@ class BowlingTest extends TestCase
 
     }
 
+    public function test_all_single_pins()
+    {
+        $this->bowling->rollMany(20, 1);
+        $this->scoreShouldBe(20);
+
+    }
+
     /**
      * @return void
      */
