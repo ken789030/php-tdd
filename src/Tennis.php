@@ -30,6 +30,10 @@ class Tennis
             return 'Love ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
+        if ($this->secondPlayerScore === 2) {
+            return 'Love Thirty';
+        }
+
         return 'Love All';
     }
 
