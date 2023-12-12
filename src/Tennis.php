@@ -28,7 +28,11 @@ class Tennis
         }
 
         if ($this->secondPlayerScore === 1) {
-            return 'Love '.$this->mappingScoreName[$this->secondPlayerScore];
+            return 'Love ' . $this->mappingScoreName[$this->secondPlayerScore];
+        }
+
+        if ($this->secondPlayerScore === 2) {
+            return 'Love Thirty';
         }
 
 
