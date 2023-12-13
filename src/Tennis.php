@@ -6,6 +6,13 @@ class Tennis
 {
 
     private int $firstPlayerScore = 0;
+    /**
+     * @var array|string[]
+     */
+    private array $mappingScoreName = [
+        1 => 'Fifteen',
+        2 => 'Thirty',
+    ];
 
     public function __construct()
     {
@@ -13,14 +20,11 @@ class Tennis
 
     public function score()
     {
-        if ($this->firstPlayerScore === 1) {
-
-            return 'Fifteen Love';
+        if ($this->firstPlayerScore > 0) {
+            return $this->mappingScoreName[$this->firstPlayerScore] . ' Love';
         }
 
-        if ($this->firstPlayerScore===2) {
-            return 'Thirty Love';
-        }
+
         return 'Love All';
     }
 
