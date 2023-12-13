@@ -23,13 +23,10 @@ class Tennis
 
     public function score()
     {
-        if ($this->firstPlayerScore > 0) {
+        if ($this->firstPlayerScore != $this->secondPlayerScore) {
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
-        if ($this->secondPlayerScore > 0) {
-            return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
-        }
 
         return 'Love All';
     }
