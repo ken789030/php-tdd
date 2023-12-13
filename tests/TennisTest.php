@@ -30,6 +30,12 @@ class TennisTest extends TestCase
         $this->scoreShouldBe('Thirty Love');
     }
 
+    public function test_Forty_Love()
+    {
+        $this->givenFirstPlayerScoreTimes(3);
+        $this->scoreShouldBe('Forty Love');
+    }
+
     /**
      * @return void
      */
