@@ -27,7 +27,7 @@ class Tennis
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
-        if ($this->secondPlayerScore === 1) {
+        if ($this->secondPlayerScore > 0) {
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
