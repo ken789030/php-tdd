@@ -23,15 +23,15 @@ class Tennis
 
     public function score()
     {
-        if ($this->firstPlayerScore != $this->secondPlayerScore) {
-            return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
+        if ($this->isDiffScore()) {
+            return $this->lookupScore();
         }
 
         if ($this->isDeuce()) {
             return $this->deuce();
         }
 
-        return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
+        return $this->sameScore();
 
     }
 
@@ -59,5 +59,29 @@ class Tennis
     public function isDeuce(): bool
     {
         return $this->firstPlayerScore === 3;
+    }
+
+    /**
+     * @return string
+     */
+    public function sameScore(): string
+    {
+        return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDiffScore(): bool
+    {
+        return $this->firstPlayerScore != $this->secondPlayerScore;
+    }
+
+    /**
+     * @return string
+     */
+    public function lookupScore(): string
+    {
+        return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
     }
 }
