@@ -27,6 +27,10 @@ class Tennis
             return $this->mappingScoreName[$this->firstPlayerScore] . ' ' . $this->mappingScoreName[$this->secondPlayerScore];
         }
 
+        if ($this->isDeuce()) {
+            return $this->deuce();
+        }
+
         return $this->mappingScoreName[$this->firstPlayerScore] . ' All';
 
     }
@@ -39,5 +43,21 @@ class Tennis
     public function addSecondPlayerScore()
     {
         $this->secondPlayerScore++;
+    }
+
+    /**
+     * @return string
+     */
+    public function deuce(): string
+    {
+        return 'Deuce';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDeuce(): bool
+    {
+        return $this->firstPlayerScore === 3;
     }
 }
