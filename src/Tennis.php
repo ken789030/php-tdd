@@ -16,14 +16,21 @@ class Tennis
         3 => 'Forty',
     ];
     private int $secondPlayerScore = 0;
+    private string $firstPlayerName;
 
-    public function __construct()
+    public function __construct(string $firstPlayerName)
     {
+        $this->firstPlayerName = $firstPlayerName;
     }
 
     public function score()
     {
         if ($this->isDiffScore()) {
+            if ($this->firstPlayerScore > 3) {
+                if ($this->firstPlayerScore - $this->secondPlayerScore) {
+                    return $this->firstPlayerName . ' Adv';
+                }
+            }
             return $this->lookupScore();
         }
 
