@@ -64,8 +64,7 @@ class TennisTest extends TestCase
 
     public function test_Deuce()
     {
-        $this->givenFirstPlayerScoreTimes(3);
-        $this->givenSecondPlayerScoreTimes(3);
+        $this->isDeuce();
         $this->scoreShouldBe('Deuce');
     }
 
@@ -97,6 +96,15 @@ class TennisTest extends TestCase
         for ($i = 0; $i < $times; $i++) {
             $this->tennis->addSecondPlayerScore();
         }
+    }
+
+    /**
+     * @return void
+     */
+    public function isDeuce(): void
+    {
+        $this->givenFirstPlayerScoreTimes(3);
+        $this->givenSecondPlayerScoreTimes(3);
     }
 
     protected function setUp(): void
